@@ -188,7 +188,7 @@ pub fn get_metadata<P: AsRef<Path>>(
                     (
                         (md.last_write_time() as i64 - 116444736000000000i64) / 10000000i64,
                         (md.last_access_time() as i64 - 116444736000000000i64) / 10000000i64,
-                        (md.creation_time() as i64 - 116444736000000000i64) / 10000000i64,
+                        (md.creation_time() as i64 - 116444736000000000i64) / 10000000i64, 
                     ),
                 ))
             } else {
