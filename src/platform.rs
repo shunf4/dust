@@ -129,9 +129,9 @@ pub fn get_metadata<P: AsRef<Path>>(
                 path.size_on_disk().ok()?,
                 Some((info.file_index(), info.volume_serial_number())),
                 (
-                    info.last_write_time().unwrap() as i64,
-                    info.last_access_time().unwrap() as i64,
-                    info.creation_time().unwrap() as i64,
+                    (info.last_write_time().unwrap() as i64 - 116444736000000000i64) / 10000000i64,
+                    (info.last_access_time().unwrap() as i64 - 116444736000000000i64) / 10000000i64,
+                    (info.creation_time().unwrap() as i64 - 116444736000000000i64) / 10000000i64,
                 ),
             ))
         } else {
@@ -139,9 +139,9 @@ pub fn get_metadata<P: AsRef<Path>>(
                 info.file_size(),
                 Some((info.file_index(), info.volume_serial_number())),
                 (
-                    info.last_write_time().unwrap() as i64,
-                    info.last_access_time().unwrap() as i64,
-                    info.creation_time().unwrap() as i64,
+                    (info.last_write_time().unwrap() as i64 - 116444736000000000i64) / 10000000i64,
+                    (info.last_access_time().unwrap() as i64 - 116444736000000000i64) / 10000000i64,
+                    (info.creation_time().unwrap() as i64 - 116444736000000000i64) / 10000000i64,
                 ),
             ))
         }
@@ -186,9 +186,9 @@ pub fn get_metadata<P: AsRef<Path>>(
                     md.len(),
                     None,
                     (
-                        md.last_write_time() as i64,
-                        md.last_access_time() as i64,
-                        md.creation_time() as i64,
+                        (md.last_write_time() as i64 - 116444736000000000i64) / 10000000i64,
+                        (md.last_access_time() as i64 - 116444736000000000i64) / 10000000i64,
+                        (md.creation_time() as i64 - 116444736000000000i64) / 10000000i64,
                     ),
                 ))
             } else {
